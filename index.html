@@ -13545,10 +13545,8 @@ function initMonitoringCharts() {
 
   /* ── API Configuration ────────────────────────────────── */
   var TAVILY_API_KEY = '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';
-  var GROQ_API_KEY   = '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';
-
   var TAVILY_ENDPOINT = 'https://api.tavily.com/search';
-  var GROQ_ENDPOINT   = 'https://api.groq.com/openai/v1/chat/completions';
+  var GROQ_ENDPOINT   = 'https://tqkycfqnujrnbxkdcnds.supabase.co/functions/v1/quick-handler';
   // Persist productId across re-invocations (e.g. "Coba Lagi" button)
   window._sbmProductId = null;
 
@@ -13645,9 +13643,9 @@ function initMonitoringCharts() {
 
   /* ── Groq model list (fallback chain) ────────────────── */
   var GROQ_MODELS = [
-    'llama-3.3-70b-versatile',
-    'llama3-70b-8192',
-    'mixtral-8x7b-32768'
+    'openai/gpt-oss-120b',
+    'qwen/qwen3.6-27b',
+    'openai/gpt-oss-20b'
   ];
   var _groqModelIdx = 0;
 
@@ -13771,7 +13769,7 @@ function initMonitoringCharts() {
       method : 'POST',
       headers: {
         'Content-Type' : 'application/json',
-        'Authorization': 'Bearer ' + GROQ_API_KEY
+        'apikey'       : 'sb_publishable_FnnCS2E5zC649byRN-qB3g_kfKqgWxO'
       },
       body: JSON.stringify({
         model      : model,
@@ -13964,9 +13962,9 @@ function initMonitoringCharts() {
   ══════════════════════════════════════════════════ */
   var AIA_CONFIG = {
     provider   : 'groq',
-    endpoint   : 'https://api.groq.com/openai/v1/chat/completions',
-    apiKey     : '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',
-    models     : ['llama-3.3-70b-versatile', 'llama3-70b-8192', 'mixtral-8x7b-32768'],
+    endpoint   : 'https://tqkycfqnujrnbxkdcnds.supabase.co/functions/v1/quick-handler',
+    apiKey     : '',
+    models     : ['openai/gpt-oss-120b', 'qwen/qwen3.6-27b', 'openai/gpt-oss-20b'],
     _modelIdx  : 0,
     maxTokens  : 1500,
     temperature: 0.45,
@@ -13981,7 +13979,7 @@ function initMonitoringCharts() {
         method : 'POST',
         headers: {
           'Content-Type' : 'application/json',
-          'Authorization': 'Bearer ' + self.apiKey
+          'apikey'       : 'sb_publishable_FnnCS2E5zC649byRN-qB3g_kfKqgWxO'
         },
         body: JSON.stringify({
           model      : model,
